@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <title>お問い合わせフォーム</title>
 <link rel="stylesheet" href="style.css">
-<script type="text/javascript" src="contact.js"></script>
 </head>
 <body>
 <div id="wrap">
@@ -13,11 +12,11 @@
         <table>
             <tr>
                 <th><label for="surname">姓<span> 必須</span></label></th>
-                <td><input id="surname" type="text" name="surname" /></td>
+                <td><input id="surname" type="text" name="surname" placeholder="例）山田"/></td>
             </tr>
             <tr>
                 <th><label for="name">名<span> 必須</span></label></th>
-                <td><input id="name" type="text" name="name" /></td>
+                <td><input id="name" type="text" name="name" placeholder="例）太郎"/></td>
             </tr>
             <tr>
                 <th>性別</th>
@@ -28,15 +27,20 @@
             </tr>
             <tr>
                 <th><label for="address">住所<span> 必須</span></label></th>
-                <td><input id="address" type="text" name="address" /></td>
+                <td><input id="address" type="text" name="address" size=50　placeholder="例）東京都江東区○○○1-1-1　マンション名" /></td>
             </tr>
             <tr>
                 <th><label for="phone">電話番号<span> 必須</span></label></th>
-                <td><input id="phone" type="text" name="phone" /></td>
+                <td><input id="phone1" type="text" name="phone1" size=3 placeholder="例）090" />-
+                    <input id="phone2" type="text" name="phone2" size=3 placeholder="例）1234" />-
+                    <input id="phone3" type="text" name="phone3" size=3 placeholder="例）5678" />
+                </td>
             </tr>
             <tr>
-                <th><label for="mail1">メールアドレス<span> 必須</span></label></th>
-                <td><input id="mail1" name="mail1" type="text" /></td>
+                <th><label for="mail">メールアドレス<span> 必須</span></label></th>
+                <td><input id="mail1" name="mail1" type="text" placeholder="例）info" />@
+                    <input id="mail2" name="mail2" type="text" placeholder="例）example.com" />
+                </td>
             </tr>
             <tr>
                 <th>どこでこのサイトを知りましたか？</th>
@@ -47,15 +51,19 @@
                 </td>
             </tr>
             <tr>
-                <select name="example">
-                    <option value="選択肢1">選択肢1</option>
-                    <option value="選択肢2">選択肢2</option>
-                    <option value="選択肢3">選択肢3</option>
-                </select>
+                <th><label>質問カテゴリ<span> 必須</span></label></th>
+                <td>
+                    <select name="category">
+                        <option value="商品について">商品について</option>
+
+                        <option value="サイトについて">サイトについて</option>
+                        <option value="その他">その他</option>
+                    </select>
+                </td>
             </tr>
             <tr>
-                <th><label for="naiyou">お問い合わせ内容<span> 必須</span></label></th>
-                <td><textarea id="naiyou" name="naiyou" cols="*" rows="*"></textarea></td>
+                <th><label for="inquiry">お問い合わせ内容<span> 必須</span></label></th>
+                <td><textarea id="inquiry" name="inquiry" cols="50" rows="10"></textarea></td>
             </tr>
         </table>
         <div class="button">
