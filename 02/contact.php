@@ -12,34 +12,34 @@
         <table>
             <tr>
                 <th><label for="surname">姓<span> 必須</span></label></th>
-                <td><input id="surname" type="text" name="surname" placeholder="例）山田"/></td>
+                <td><input id="surname" type="text" name="surname" placeholder="山田" size=10/></td>
             </tr>
             <tr>
                 <th><label for="name">名<span> 必須</span></label></th>
-                <td><input id="name" type="text" name="name" placeholder="例）太郎"/></td>
+                <td><input id="name" type="text" name="name" placeholder="太郎" size=10/></td>
             </tr>
             <tr>
-                <th>性別</th>
-                <td><input id="men" type="radio" name="sex" value="男性" /><label for="men">男性</label>
+                <th><label for="sex">性別<span> 必須</span></label></th>
+                <td><input id="man" type="radio" name="sex" value="男性" /><label for="man">男性</label>
                     <input id="women" type="radio" name="sex" value="女性" /><label for="women">女性</label>
                     <input id="unknown" type="radio" name="sex" value="不明" /><label for="unknown">不明</label>
                 </td>
             </tr>
             <tr>
                 <th><label for="address">住所<span> 必須</span></label></th>
-                <td><input id="address" type="text" name="address" size=50　placeholder="例）東京都江東区○○○1-1-1　マンション名" /></td>
+                <td><input id="address" type="text" size=50 name="address" placeholder="東京都江東区○○○1-1-1　exマンション"　　/></td>
             </tr>
             <tr>
                 <th><label for="phone">電話番号<span> 必須</span></label></th>
-                <td><input id="phone1" type="text" name="phone1" size=3 placeholder="例）090" />-
-                    <input id="phone2" type="text" name="phone2" size=3 placeholder="例）1234" />-
-                    <input id="phone3" type="text" name="phone3" size=3 placeholder="例）5678" />
+                <td><input id="phone1" type="text" name="phone1" size=3 placeholder="090" />-
+                    <input id="phone2" type="text" name="phone2" size=3 placeholder="1234" />-
+                    <input id="phone3" type="text" name="phone3" size=3 placeholder="5678" />
                 </td>
             </tr>
             <tr>
-                <th><label for="mail">メールアドレス<span> 必須</span></label></th>
-                <td><input id="mail1" name="mail1" type="text" placeholder="例）info" />@
-                    <input id="mail2" name="mail2" type="text" placeholder="例）example.com" />
+                <th><label for="email">メールアドレス<span> 必須</span></label></th>
+                <td><input id="email1" name="email1" type="text" placeholder="@以前を入力" /> @
+                    <input id="email2" name="email2" type="text" placeholder="@以降を入力" />
                 </td>
             </tr>
             <tr>
@@ -63,7 +63,7 @@
             </tr>
             <tr>
                 <th><label for="inquiry">お問い合わせ内容<span> 必須</span></label></th>
-                <td><textarea id="inquiry" name="inquiry" cols="50" rows="10"></textarea></td>
+                <td><textarea id="inquiry" name="inquiry" cols="*" rows="*"></textarea></td>
             </tr>
         </table>
         <div class="button">
