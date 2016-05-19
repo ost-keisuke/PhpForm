@@ -46,7 +46,13 @@
                 	<input id="yahoo" name="yahoo" type="checkbox" value="ヤフー広告" /><label for="yahoo">ヤフー広告</label>
                 </td>
             </tr>
-
+            <tr>
+                <select name="example">
+                    <option value="選択肢1">選択肢1</option>
+                    <option value="選択肢2">選択肢2</option>
+                    <option value="選択肢3">選択肢3</option>
+                </select>
+            </tr>
             <tr>
                 <th><label for="naiyou">お問い合わせ内容<span> 必須</span></label></th>
                 <td><textarea id="naiyou" name="naiyou" cols="*" rows="*"></textarea></td>
