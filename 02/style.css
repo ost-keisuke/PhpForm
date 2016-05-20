@@ -19,27 +19,27 @@ body > div label {
     width: 145px;
     float: left;
     position: relative;
-
+	font-size: 12px;
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
     position: relative;
 }
 
-/*span{/*spanは特に意味を持たないタグです。装飾用などに使用します*/
+span{/*spanは特に意味を持たないタグです。装飾用などに使用します*/
 
-/*	font-size:10px;/*文字の大きさ*/
-/*	color:#F00;/*文字の色*/
+	font-size:10px;/*文字の大きさ*/
+	color:#F00;/*文字の色*/
 
-/*}*/
+}
 
 body > div label span {
     color: #fff;
     background: #fb3b6f;
     display: inline-block;
     padding: 2px 5px; /*角の丸め*/
-    font-size: 10px;
-    font-size: 1rem;
+    font-size: 8px;
+    font-size: rem;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 2px;

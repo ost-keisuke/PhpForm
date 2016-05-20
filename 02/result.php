@@ -1,5 +1,6 @@
 <div id="wrap">
     <h3>お問い合わせフォーム・エラーチェック・確認ページ</h3>
+    <link rel="stylesheet" href="style.css">
     <?PHP
 
 	//すべて受信
@@ -8,20 +9,29 @@
     //エラー用FLAG未記入の場合1にする
 	$flag=0;
 
-	//名前チェック
-	if(empty($surname)){
+    echo '<table border=1>
+    ';
 
-		echo '<p><span>必須</span>名字を入力してください。</p><br />';
+	//名前チェック
+	if(empty($surname) and empty($name)){
+
+		echo '<p><span>必須</span>姓名を入力してください。</p><br />';
 		$flag=1;
 
-	}
-
-    if(empty($name)){
-
+	}elesif(empty($surname)){
+        echo '<p><span>必須</span>名字を入力してください。</p><br />';
+		$flag=1;
+    }elseif(empty($name)){
         echo '<p><span>必須</span>お名前を入力してください。</p><br />';
-        $flag=1;
-
+		$flag=1;
+    }else{
+        echo '<tr>
+            <th>姓名</th>
+            <td>'.$surname." ".$name.'</td>
+        </tr>';
     }
+
+
 
     //性別チェック
     if(empty($sex)){
@@ -29,6 +39,11 @@
         echo '<p><span>必須</span>性別のチェックをしてください。</p><br />';
         $flag=1;
 
+    }else{
+        echo '<tr>
+            <th>性別</th>
+            <td>'.$sex.'</td>
+        </tr>';
     }
 
     //住所チェック
@@ -37,6 +52,11 @@
         echo '<p><span>必須</span>ご住所を入力してください。</p><br />';
         $flag=1;
 
+    }else{
+        echo '<tr>
+            <th>住所</th>
+            <td>'.$address.'</td>
+        </tr>';
     }
 
     //電話番号チェック
@@ -103,14 +123,11 @@
 	else{
 
 		echo '
+
         <table border=1>
             <tr>
-                <th>姓</label></th>
-                <td>'.$surname.'</td>
-            </tr>
-            <tr>
-                <th>名</label></th>
-                <td>'.$name.'</td>
+                <th>姓名</th>
+                <td>'.$surname." ".$name.'</td>
             </tr>
             <tr>
                 <th>性別</th>

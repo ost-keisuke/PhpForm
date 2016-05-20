@@ -31,8 +31,8 @@
             </tr>
             <tr>
                 <th><label for="phone">電話番号<span> 必須</span></label></th>
-                <td><input id="phone1" type="text" name="phone1" size=3 placeholder="090" />-
-                    <input id="phone2" type="text" name="phone2" size=3 placeholder="1234" />-
+                <td><input id="phone1" type="text" name="phone1" size=3 placeholder="090" /> -
+                    <input id="phone2" type="text" name="phone2" size=3 placeholder="1234" /> -
                     <input id="phone3" type="text" name="phone3" size=3 placeholder="5678" />
                 </td>
             </tr>
