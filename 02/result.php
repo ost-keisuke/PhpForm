@@ -14,17 +14,15 @@
 
 	//名前チェック
 	if(empty($surname) and empty($name)){
-
 		echo '<p><span>必須</span>姓名を入力してください。</p><br />';
 		$flag=1;
-
-	}elesif(empty($surname)){
+	}elseif(empty($surname)){
         echo '<p><span>必須</span>名字を入力してください。</p><br />';
 		$flag=1;
     }elseif(empty($name)){
         echo '<p><span>必須</span>お名前を入力してください。</p><br />';
 		$flag=1;
-    }else{
+    }elseif($flag != 0){
         echo '<tr>
             <th>姓名</th>
             <td>'.$surname." ".$name.'</td>
@@ -39,7 +37,7 @@
         echo '<p><span>必須</span>性別のチェックをしてください。</p><br />';
         $flag=1;
 
-    }else{
+    }elseif($flag != 0){
         echo '<tr>
             <th>性別</th>
             <td>'.$sex.'</td>
@@ -52,7 +50,7 @@
         echo '<p><span>必須</span>ご住所を入力してください。</p><br />';
         $flag=1;
 
-    }else{
+    }elseif($flag != 0){
         echo '<tr>
             <th>住所</th>
             <td>'.$address.'</td>
@@ -60,41 +58,45 @@
     }
 
     //電話番号チェック
-    if(empty($phone1)){
+    if(empty($phone1) and empty($phone2) and empty($phone3)){
 
-        echo '<p><span>必須</span>お電話番号の1区切り目を入力してください。</p><br />';
+        echo '<p><span>必須</span>お電話番号を入力してください。</p><br />';
         $flag=1;
 
-    }
+    }elseif(empty($phone1) or empty($phone2) or empty($phone3)){
 
-    if(empty($phone2)){
-
-        echo '<p><span>必須</span>お電話番号の2区切り目を入力してください。</p><br />';
+        echo '<p><span>必須</span>お電話番号が未入力の欄があります。<br />ハイフンごとに分けて入力してください。</p><br />';
         $flag=1;
 
-    }
-
-    if(empty($phone3)){
-
-        echo '<p><span>必須</span>お電話番号の3区切り目を入力してください。</p><br />';
-        $flag=1;
-
+    }elseif($flag != 0){
+        echo '<tr>
+            <th>電話番号</th>
+            <td>'.$phone1.'-'.$phone2.'-'.$phone3.'</td>
+        </tr>';
     }
 
 	//メールアドレスチェック
-	if(empty($email1)){
+	if(empty($email1) and empty($email2)){
+
+		echo '<p><span>必須</span>メールアドレスを入力してください。</p><br />';
+		$flag=1;
+
+	}elseif(empty($email1)){
 
 		echo '<p><span>必須</span>メールアドレス@以前を入力してください。</p><br />';
 		$flag=1;
 
-	}
-
-	if(empty($email2)){
+	}elseif(empty($email2)){
 
 		echo '<p><span>必須</span>メールアドレス@以降を入力してください。</p><br />';
 		$flag=1;
 
-	}
+	}elseif($flag != 0){
+        echo '<tr>
+            <th>メールアドレス</th>
+            <td>'.$email1.'@'.$email2.'</td>
+        </tr>';
+    }
 
     //質問カテゴリチェック
     if($category == 1){
@@ -102,6 +104,11 @@
         echo '<p><span>必須</span>ご質問のカテゴリーを選択してください。</p><br />';
         $flag=1;
 
+    }elseif($flag != 0){
+        echo '<tr>
+            <th>質問カテゴリ</th>
+            <td>'.$category.'</td>
+        </tr>';
     }
 
 	//お問い合わせ内容チェック
@@ -110,7 +117,12 @@
 		echo '<p><span>必須</span>お問い合わせ内容を入力してください。</p><br />';
 		$flag=1;
 
-	}
+	}elseif($flag != 0){
+        echo '<tr>
+            <th>お問い合わせ内容</th>
+            <td>'.$inquiry.'</td>
+        </tr>';
+    }
 
 	//エラーの場合(上記で未記入の場合flagを1にしているので)すなわちflagが1の場合戻るボタンを作成
 	if($flag==1){
