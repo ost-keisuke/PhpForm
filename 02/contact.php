@@ -63,7 +63,7 @@
             </tr>
             <tr>
                 <th><label for="inquiry">お問い合わせ内容<span> 必須</span></label></th>
-                <td><textarea id="inquiry" name="inquiry" cols="*" rows="*"></textarea></td>
+                <td><textarea id="inquiry" name="inquiry" cols="50" rows="20"></textarea></td>
             </tr>
         </table>
         <div class="button">

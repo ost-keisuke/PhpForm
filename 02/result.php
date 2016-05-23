@@ -5,7 +5,7 @@ $check = ["雑誌", "広告", "知人の紹介" ];
 $select = [1 => "商品について", 2 => "サイトについて", 3 => "その他"];
 
 //すべて受信
-extract($_POST);
+extract($_POST, EXTR_SKIP);
 
 //エラー用FLAG未記入の場合1にする
 $flag=0;
@@ -31,14 +31,17 @@ $flag=0;
             <?php if(empty($surname) and empty($name)){
 
         		echo '<p><span>必須</span>姓名を入力してください。</p><br />';
+                $flag=1;
 
         	}elseif(empty($surname)){
 
                 echo '<p><span>必須</span>名字を入力してください。</p><br />';
+                $flag=1;
 
             }elseif(empty($name)){
 
                 echo '<p><span>必須</span>お名前を入力してください。</p><br />';
+                $flag=1;
 
             }else{
                 echo '<tr>
@@ -62,6 +65,7 @@ $flag=0;
             if(empty($address)){
 
                 echo '<p><span>必須</span>ご住所を入力してください。</p><br />';
+                $flag=1;
 
             }else{
                 echo '<tr>
@@ -77,10 +81,12 @@ $flag=0;
             if(empty($phone1) and empty($phone2) and empty($phone3)){
 
                 echo '<p><span>必須</span>お電話番号を入力してください。</p><br />';
+                $flag=1;
 
             }elseif(empty($phone1) or empty($phone2) or empty($phone3)){
 
                 echo '<p><span>必須</span>お電話番号が未入力の欄があります。<br />ハイフンごとに分けて入力してください。</p><br />';
+                $flag=1;
 
             }else{
                 echo '<tr>
@@ -133,6 +139,7 @@ $flag=0;
             if($category == 0){
 
                 echo '<p><span>必須</span>ご質問のカテゴリーを選択してください。</p><br />';
+                $flag=1;
 
             }else{
                 echo '<tr>
@@ -148,6 +155,7 @@ $flag=0;
             if(empty($inquiry)){
 
                 echo '<p><span>必須</span>お問い合わせ内容を入力してください。</p><br />';
+                $flag=1;
 
             }else{
                 echo '<tr>
@@ -157,7 +165,12 @@ $flag=0;
              ?>
         </div>
         <div class="button">
-        	<input type="submit" value="送信する" /><input type="button" onclick="self.history.back()" value="入力画面に戻る" />
+            <?php
+                if($flag !== 1){
+                    echo ' <input type="submit" value="送信する" />';
+                }
+            ?>
+        	<input type="button" onclick="self.history.back()" value="入力画面に戻る" />
         </div>
         <!--button_end -->
     </form>
