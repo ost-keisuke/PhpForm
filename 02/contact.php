@@ -9,7 +9,7 @@
 <div id="wrap">
     <h3>お問い合わせフォーム・入力ページ</h3>
     <form action="result.php" method="post">
-        <table border=1>
+        <list>
             <tr>
                 <th><label for="surname">姓<span> 必須</span></label></th>
                 <td><input id="surname" type="text" name="surname" placeholder="山田" size=10/></td>
@@ -20,9 +20,9 @@
             </tr>
             <tr>
                 <th><label for="sex">性別<span> 必須</span></label></th>
-                <td><input id="man" type="radio" name="sex" value="男性" /><label for="man">男性</label>
-                    <input id="women" type="radio" name="sex" value="女性" /><label for="women">女性</label>
-                    <input id="unknown" type="radio" name="sex" value="不明" /><label for="unknown">不明</label>
+                <td><input id="man" type="radio" name="sex" value=0 /><label for="man">男性</label>
+                    <input id="women" type="radio" name="sex" value=1 /><label for="women">女性</label>
+                    <input id="unknown" type="radio" name="sex" value=2 checked/><label for="unknown">不明</label>
                 </td>
             </tr>
             <tr>
@@ -45,19 +45,19 @@
             <tr>
                 <th>どこでこのサイトを知りましたか？</th>
                 <td>
-                	<input id="magazine" name="magazine" type="checkbox" value="雑誌" /><label for="magazine">雑誌</label>
-                    <input id="frend" name="frend" type="checkbox" value="知人の紹介" /><label for="frend">知人の紹介</label>
-                	<input id="yahoo" name="yahoo" type="checkbox" value="ヤフー広告" /><label for="yahoo">ヤフー広告</label>
+                	<input id="know" name="know" type="checkbox" value="0" /><label for="magazine">雑誌</label>
+                    <input id="know" name="know" type="checkbox" value="1" /><label for="frend">広告</label>
+                	<input id="know" name="know" type="checkbox" value="2" /><label for="yahoo">知人の紹介</label>
                 </td>
             </tr>
             <tr>
                 <th><label>質問カテゴリ<span> 必須</span></label></th>
                 <td>
                     <select name="category">
-                        <option value=1>カテゴリーを選択してください</option>
-                        <option value=2>商品について</option>
-                        <option value=3>サイトについて</option>
-                        <option value=4>その他</option>
+                        <option value=0>カテゴリーを選択してください</option>
+                        <option value=1>商品について</option>
+                        <option value=2>サイトについて</option>
+                        <option value=3>その他</option>
                     </select>
                 </td>
             </tr>
@@ -70,6 +70,7 @@
         	<input type="submit" value="送信" />
         </div>
         <!--button_end -->
+    </list>
     </form>
 </div>
 <!--wrap_end-->
