@@ -1,14 +1,14 @@
 <?PHP
-//ラジオボタン+チェックボックス+セレクトボックス用配列
-$radio = ["男性", "女性", "不明"];
-$check = ["雑誌", "広告", "知人の紹介" ];
-$select = [1 => "商品について", 2 => "サイトについて", 3 => "その他"];
+    //ラジオボタン+チェックボックス+セレクトボックス用配列
+    $radio = ["男性", "女性", "不明"];
+    $check = ["雑誌", "広告", "知人の紹介" ];
+    $select = [1 => "商品について", 2 => "サイトについて", 3 => "その他"];
 
-//すべて受信
-extract($_POST, EXTR_SKIP);
+    //すべて受信
+    extract($_POST, EXTR_SKIP);
 
-//エラー用FLAG未記入の場合1にする
-$flag=0;
+    //エラー用FLAG未記入の場合1にする
+    $flag=0;
 
 ?>
 
@@ -24,9 +24,9 @@ $flag=0;
 <div id="wrap">
 
     <form action="repost.php" method="post">
-        <div><h1>お問い合わせ 内容の確認</h1></div>
+        <header><h1>お問い合わせ 内容の確認</h1></header>
         <p>内容に間違いが無ければ送信ボタンをクリックしてください。</p>
-        <div>
+        <div class="form">
             【姓 名】
             <?php if(empty($surname) and empty($name)){
 
@@ -44,22 +44,22 @@ $flag=0;
                 $flag=1;
 
             }else{
-                echo '<tr>
+                echo '<div class="form">
                     <td>'.$surname." ".$name.'</td>
-                </tr>';
+                </div>';
             } ?>
         </div>
 
-        <div>
+        <div class="form">
             【性別】
             <?php
-                echo '<tr>
+                echo '<div class="form">
                     <td>'.$radio[$sex].'</td>
-                </tr>';
+                </div>';
             ?>
         </div>
 
-        <div>
+        <div class="form">
             【住所】
             <?php
             if(empty($address)){
@@ -68,14 +68,14 @@ $flag=0;
                 $flag=1;
 
             }else{
-                echo '<tr>
+                echo '<div class="form">
                     <td>'.$address.'</td>
-                </tr>';
+                </div>';
             }
              ?>
         </div>
 
-        <div>
+        <div class="form">
             【電話番号】
             <?php
             if(empty($phone1) and empty($phone2) and empty($phone3)){
@@ -89,14 +89,14 @@ $flag=0;
                 $flag=1;
 
             }else{
-                echo '<tr>
+                echo '<div class="form">
                     <td>'.$phone1.'-'.$phone2.'-'.$phone3.'</td>
-                </tr>';
+                </div>';
             }
              ?>
         </div>
 
-        <div>
+        <div class="form">
             【メールアドレス】
             <?php
             if(empty($email1) and empty($email2)){
@@ -115,14 +115,14 @@ $flag=0;
         		$flag=1;
 
         	}else{
-                echo '<tr>
+                echo '<div class="form">
                     <td>'.$email1.'@'.$email2.'</td>
-                </tr>';
+                </div>';
             }
              ?>
         </div>
 
-        <div>
+        <div class="form">
             【どこでこのサイトを知ったか】
             <?php
                 if(empty($know) === false){
@@ -133,7 +133,7 @@ $flag=0;
             ?>
         </div>
 
-        <div>
+        <div class="form">
             【質問カテゴリ】
             <?php
             if($category == 0){
@@ -142,14 +142,14 @@ $flag=0;
                 $flag=1;
 
             }else{
-                echo '<tr>
+                echo '<div class="form">
                     <td>'.$select[$category].'</td>
-                </tr>';
+                </div>';
             }
              ?>
         </div>
 
-        <div>
+        <div class="form">
             【本文】
             <?php
             if(empty($inquiry)){
@@ -158,19 +158,14 @@ $flag=0;
                 $flag=1;
 
             }else{
-                echo '<tr>
+                echo '<div class="form">
                     <td>'.$inquiry.'</td>
-                </tr>';
+                </div>';
             }
              ?>
         </div>
         <div class="button">
-            <?php
-                if($flag !== 1){
-                    echo ' <input type="submit" value="送信する" />';
-                }
-            ?>
-        	<input type="button" onclick="self.history.back()" value="入力画面に戻る" />
+        	<input type="submit" <?php if($flag === 1) echo 'disabled'; ?> value="送信する" /><input type="button" onclick="self.history.back()" value="入力画面に戻る" />
         </div>
         <!--button_end -->
     </form>

@@ -45,11 +45,11 @@ q:before, q:after {
 
 /* -------ここから本文------ */
 
-table {
-	border-collapse: collapse;
-	border-spacing: 0;
+header h1{
+	margin: 0;
+	font-size: 24px;
+	border-bottom: solid 2px;
 }
-
 
 
 body{
@@ -66,6 +66,12 @@ body{
 	margin:0 auto;/*全体を中央配置*/
 
 }
+
+body > div {
+	width:600px;/*横幅*/
+	margin:0 auto;/*全体を中央配置*/
+}
+
 
 body > div label {
     margin-bottom: 0;
@@ -103,7 +109,7 @@ body > div label span {
 
 
 table{
-
+	display: inline-block;
 	border-collapse:collapse;/*テーブルのうち枠線を重ねて表示*/
 	width:598px;/*横幅*/
 
