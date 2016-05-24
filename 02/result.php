@@ -1,7 +1,7 @@
 <?PHP
     //ラジオボタン+チェックボックス+セレクトボックス用配列
     $radio = ["男性", "女性", "不明"];
-    $check = ["雑誌", "広告", "知人の紹介" ];
+    $check = [1 => "雑誌", 2 => "広告", 3 => "知人の紹介" ];
     $select = [1 => "商品について", 2 => "サイトについて", 3 => "その他"];
 
     //すべて受信
@@ -25,142 +25,130 @@
 
     <form action="repost.php" method="post">
         <header><h1>お問い合わせ 内容の確認</h1></header>
-        <p>内容に間違いが無ければ送信ボタンをクリックしてください。</p>
+
         <div class="form">
-            【姓 名】
+            <div class="tag"><label>姓名<span>必須</span></label></div>
             <?php if(empty($surname) and empty($name)){
 
-        		echo '<p><span>必須</span>姓名を入力してください。</p><br />';
+        		echo '<p class="error">姓名を入力してください。</p>';
                 $flag=1;
 
         	}elseif(empty($surname)){
 
-                echo '<p><span>必須</span>名字を入力してください。</p><br />';
+                echo '<p class="error">名字を入力してください。</p>';
                 $flag=1;
 
             }elseif(empty($name)){
 
-                echo '<p><span>必須</span>お名前を入力してください。</p><br />';
+                echo '<p class="error">お名前を入力してください。</p>';
                 $flag=1;
 
             }else{
-                echo '<div class="form">
-                    <td>'.$surname." ".$name.'</td>
-                </div>';
+                echo '<p>'. $surname." ".$name. '</p>';
             } ?>
         </div>
 
         <div class="form">
-            【性別】
+            <div class="tag"><label>性別<span>必須</span></label></div>
             <?php
-                echo '<div class="form">
-                    <td>'.$radio[$sex].'</td>
-                </div>';
+                echo '<p>'. $radio[$sex]. '</p>';
             ?>
         </div>
 
         <div class="form">
-            【住所】
+            <div class="tag"><label>住所<span>必須</span></label></div>
             <?php
             if(empty($address)){
 
-                echo '<p><span>必須</span>ご住所を入力してください。</p><br />';
+                echo '<p class="error">ご住所を入力してください。</p>';
                 $flag=1;
 
             }else{
-                echo '<div class="form">
-                    <td>'.$address.'</td>
-                </div>';
+                echo '<p>'.$address.'</p>';
             }
              ?>
         </div>
 
         <div class="form">
-            【電話番号】
+            <div class="tag"><label>電話番号<span>必須</span></label></div>
             <?php
             if(empty($phone1) and empty($phone2) and empty($phone3)){
 
-                echo '<p><span>必須</span>お電話番号を入力してください。</p><br />';
+                echo '<p class="error">お電話番号を入力してください。</p>';
                 $flag=1;
 
             }elseif(empty($phone1) or empty($phone2) or empty($phone3)){
 
-                echo '<p><span>必須</span>お電話番号が未入力の欄があります。<br />ハイフンごとに分けて入力してください。</p><br />';
+                echo '<p class="error">お電話番号が未入力の欄があります。ハイフンごとに分けて入力してください。</p>';
                 $flag=1;
 
             }else{
-                echo '<div class="form">
-                    <td>'.$phone1.'-'.$phone2.'-'.$phone3.'</td>
-                </div>';
+                echo '<p>'.$phone1.'-'.$phone2.'-'.$phone3.'</p>';
             }
              ?>
         </div>
 
         <div class="form">
-            【メールアドレス】
+            <div class="tag"><label>メールアドレス<span>必須</span></label></div>
             <?php
             if(empty($email1) and empty($email2)){
 
-        		echo '<p><span>必須</span>メールアドレスを入力してください。</p><br />';
+        		echo '<p class="error">メールアドレスを入力してください。</p>';
         		$flag=1;
 
         	}elseif(empty($email1)){
 
-        		echo '<p><span>必須</span>メールアドレス@以前を入力してください。</p><br />';
+        		echo '<p class="error">メールアドレス@以前を入力してください。</p>';
         		$flag=1;
 
         	}elseif(empty($email2)){
 
-        		echo '<p><span>必須</span>メールアドレス@以降を入力してください。</p><br />';
+        		echo '<p class="error">メールアドレス@以降を入力してください。</p>';
         		$flag=1;
 
         	}else{
-                echo '<div class="form">
-                    <td>'.$email1.'@'.$email2.'</td>
-                </div>';
+                echo '<p>'.$email1.'@'.$email2.'</p>';
             }
              ?>
         </div>
 
         <div class="form">
-            【どこでこのサイトを知ったか】
+            <div class="tag"><label>サイトを知った経緯<span class=any>任意</span></label></div>
             <?php
                 if(empty($know) === false){
-                    foreach ($check as $value) {
-                        echo $value. " ";
+                    echo '<p>';
+                    for($i=0;$i<count($know);$i++) {
+                        echo $check[$know[$i]]. " ";
                     }
+                    echo '</p>';
                 }
             ?>
         </div>
 
         <div class="form">
-            【質問カテゴリ】
+            <div class="tag"><label>お問い合わせカテゴリ<span>必須</span></label></div>
             <?php
             if($category == 0){
 
-                echo '<p><span>必須</span>ご質問のカテゴリーを選択してください。</p><br />';
+                echo '<p class="error">お問い合わせのカテゴリーを選択してください。</p>';
                 $flag=1;
 
             }else{
-                echo '<div class="form">
-                    <td>'.$select[$category].'</td>
-                </div>';
+                echo '<p>'. $select[$category]. '</p>';
             }
              ?>
         </div>
 
         <div class="form">
-            【本文】
+            <div class="tag"><label>お問い合わせ内容<span>必須</span></label></div>
             <?php
             if(empty($inquiry)){
 
-                echo '<p><span>必須</span>お問い合わせ内容を入力してください。</p><br />';
+                echo '<p id="errortext"><span>必須</span>お問い合わせ内容を入力してください。</p>';
                 $flag=1;
 
             }else{
-                echo '<div class="form">
-                    <td>'.$inquiry.'</td>
-                </div>';
+                echo '<p id="text">'. nl2br($inquiry). '</p>';
             }
              ?>
         </div>
