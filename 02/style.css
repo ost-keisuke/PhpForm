@@ -47,8 +47,20 @@ q:before, q:after {
 
 header h1{
 	margin: 0;
-	font-size: 24px;
-	border-bottom: solid 2px;
+	font-size: 30px;
+	padding: 20px;
+    background: #ffe5e9;
+    background: linear-gradient(to bottom, #fff, #ffc0cb);
+                -webkit-gradient(linear, left top, left bottom, from(#fff), to(#ffc0cb));
+                -moz-linear-gradient(top, #fff, #ffc0cb);
+                filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr='#FFffffff', endColorstr='#FFffc0cb');
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ffc0cb',GradientType=0 );
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    box-shadow: 0 0 2px 1px rgba(0,0,0,0.1);
+    -moz-box-shadow: 0 0 2px 1px rgba(0,0,0,0.1);
+    -webkit-box-shadow: 0 0 2px 1px rgba(0,0,0,0.1);
 }
 
 
@@ -56,19 +68,74 @@ body{
 
 	margin:0;/*外側への余白*/
 	padding:0;/*内側への余白*/
-	font-size:12px;/*文字の大きさ*/
+	font-size:15px;/*文字の大きさ*/
 
 }
 
 #wrap{
 
-	width:600px;/*横幅*/
+	width:800px;/*横幅*/
 	margin:0 auto;/*全体を中央配置*/
 
 }
 
+p {
+	display: inline;
+}
+
+.error{
+	color: #FF0000;
+}
+
+#errortext{
+	display: block;
+	position: relative;
+	color: #FF0000;
+	width:560px;/*横幅*/
+	left: 220px;/*左からの相対位置*/
+}
+
+#text{
+	display: block;
+	position: relative;
+	width:560px;/*横幅*/
+	left: 220px;/*左からの相対位置*/
+}
+
+.form {
+
+	overflow: hidden;
+	padding: 5px;
+	border-style: dotted ;
+	border-width: 2px;
+	border-top: 1px dotted;
+	border-color: #F5A9E1;
+	font-size: 15px;
+	margin-top: -1px;
+	border-radius: 7px;
+
+}
+
+.tag{
+	display: inline-block;
+	position: relative;
+	padding: 5px;
+	font-size: 15px;
+	width: 200px;
+}
+
+#qa{
+	display: inline-block;
+	position: relative;
+	padding: 5px;
+	font-size: 15px;
+	width: 200px;
+	top: -55px;
+}
+
+
 body > div {
-	width:600px;/*横幅*/
+	width:800px;/*横幅*/
 	margin:0 auto;/*全体を中央配置*/
 }
 
@@ -77,9 +144,7 @@ body > div label {
     margin-bottom: 0;
     text-align: right;
     width: 145px;
-/*    float: left;*/
-    position: relative;
-	font-size: 12px;
+	font-size: 15px;
     min-height: 1px;
     padding-right: 15px;
     padding-left: 15px;
@@ -99,44 +164,37 @@ body > div label span {
     display: inline-block;
     padding: 2px 5px; /*角の丸め*/
     font-size: 8px;
-    font-size: rem;
     -moz-border-radius: 2px;
     -webkit-border-radius: 2px;
     border-radius: 2px;
-/*    position: absolute;
-    right: 16px;
-    top: 19px;*/
-
-
-table{
-	display: inline-block;
-	border-collapse:collapse;/*テーブルのうち枠線を重ねて表示*/
-	width:598px;/*横幅*/
-
+	float: left;
 }
 
-th{/*thは見出しセルです。*/
-
-	border:solid 1px #999;/*ボーダーを上下左右に実線で,1px,で#999で*/
-	background:#FFF0F5;
-	width:190px;/*横幅*/
-	padding:5px;/*内側への余白上下左右5px*/
-	text-align:left;/*文字を左寄せ*/
-
-
+.any{
+	font-size:10px;/*文字の大きさ*/
+	color:#3ADF00;/*文字の色*/
 }
 
-td{
+body > div label span.any {
+    color: #FFF;
+    background: #5858FA;
+    display: inline-block;
+    padding: 2px 5px; /*角の丸め*/
+    font-size: 8px;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
 
-	border:solid 1px #999;/*ボーダーを上下左右に実線で,1px,で#999で*/
-	width:388px;/*横幅*/
-	padding:5px;/*内側への余白上下左右5px*/
+#one{
+	display: block;
+	font-size: 10px;
 
 }
 
 textarea{
-
-	width:300px;/*横幅*/
+	position: relative;
+	width:560px;/*横幅*/
 	height:150px;/*高さ*/
 
 }
@@ -145,5 +203,6 @@ textarea{
 
 	text-align:center;/*文字を中央寄せ*/
 	padding:10px 0;/*内側への余白上下10px*/
+
 
 }
