@@ -34,15 +34,15 @@
 
             <div class="form">
                 <div class="tag"><label for="phone">電話番号<span>必須</span></label></div>
-                <input id="phone1" type="text" required="required" name="phone1" size=3 maxlength=4 pattern="^[0-9]+$" placeholder="090" /><p> -</p>
-                    <input id="phone2" type="text" required="required" name="phone2" size=3 maxlength=4 pattern="^[0-9]+$" placeholder="1234" /><p> -</p>
-                    <input id="phone3" type="text" required="required" name="phone3" size=3 maxlength=4 pattern="^[0-9]+$" placeholder="5678" />
+                <input id="phone1" type="text" required="required" name="phone1" size=3 minlength=2 maxlength=4 pattern="^[0-9]+$" placeholder="090" /><p> -</p>
+                    <input id="phone2" type="text" required="required" name="phone2" size=3 minlength=2 maxlength=4 pattern="^[0-9]+$" placeholder="1234" /><p> -</p>
+                    <input id="phone3" type="text" required="required" name="phone3" size=3 minlength=2 maxlength=4 pattern="^[0-9]+$" placeholder="5678" />
             </div>
 
             <div class="form">
                 <div class="tag"><label for="email">メールアドレス<span>必須</span></label></div>
                 <input id="email1" name="email1" required="required" type="text" pattern="^[0-9A-Za-z._-]+$" placeholder="@以前を入力" /><p> @</p>
-                    <input id="email2" name="email2" required="required" type="text" pattern="^[0-9A-Za-z._-]+$" placeholder="@以降を入力" />
+                    <input id="email2" name="email2" required="required" type="text" pattern="^[0-9A-Za-z._-]+$" minlength=3 placeholder="@以降を入力" />
             </div>
 
             <div class="form">
