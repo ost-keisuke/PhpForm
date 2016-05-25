@@ -28,17 +28,17 @@
 
         <div class="form">
             <div class="tag"><label>姓名<span>必須</span></label></div>
-            <?php if(empty($surname) and empty($name)){
+            <?php if(trim($surname, " 　") == false and trim($name, " 　") == false){
 
         		echo '<p class="error">姓名を入力してください。</p>';
                 $flag=1;
 
-        	}elseif(empty($surname)){
+        	}elseif(trim($surname, " 　") == false){
 
                 echo '<p class="error">名字を入力してください。</p>';
                 $flag=1;
 
-            }elseif(empty($name)){
+            }elseif(trim($name, " 　") == false){
 
                 echo '<p class="error">お名前を入力してください。</p>';
                 $flag=1;
@@ -58,7 +58,7 @@
         <div class="form">
             <div class="tag"><label>住所<span>必須</span></label></div>
             <?php
-            if(empty($address)){
+            if(trim($address, " 　") == false){
 
                 echo '<p class="error">ご住所を入力してください。</p>';
                 $flag=1;
@@ -72,12 +72,12 @@
         <div class="form">
             <div class="tag"><label>電話番号<span>必須</span></label></div>
             <?php
-            if(empty($phone1) and empty($phone2) and empty($phone3)){
+            if(trim($phone1, " 　") == false and trim($phone2, " 　") == false and trim($phone3, " 　") == false){
 
                 echo '<p class="error">お電話番号を入力してください。</p>';
                 $flag=1;
 
-            }elseif(empty($phone1) or empty($phone2) or empty($phone3)){
+            }elseif(trim($phone1, " 　") == false or trim($phone2, " 　") == false or trim($phone3, " 　") == false){
 
                 echo '<p class="error">お電話番号が未入力の欄があります。ハイフンごとに分けて入力してください。</p>';
                 $flag=1;
@@ -91,17 +91,17 @@
         <div class="form">
             <div class="tag"><label>メールアドレス<span>必須</span></label></div>
             <?php
-            if(empty($email1) and empty($email2)){
+            if(trim($email1, " 　") == false and trim($email2, " 　") == false){
 
         		echo '<p class="error">メールアドレスを入力してください。</p>';
         		$flag=1;
 
-        	}elseif(empty($email1)){
+        	}elseif(trim($email1, " 　") == false){
 
         		echo '<p class="error">メールアドレス@以前を入力してください。</p>';
         		$flag=1;
 
-        	}elseif(empty($email2)){
+        	}elseif(trim($email2, " 　") == false){
 
         		echo '<p class="error">メールアドレス@以降を入力してください。</p>';
         		$flag=1;
@@ -142,9 +142,9 @@
         <div class="form">
             <div class="tag"><label>お問い合わせ内容<span>必須</span></label></div>
             <?php
-            if(empty($inquiry)){
+            if(trim($inquiry, " 　\n\r") == false){
 
-                echo '<p id="errortext"><span>必須</span>お問い合わせ内容を入力してください。</p>';
+                echo '<p id="errortext">お問い合わせ内容を入力してください。</p>';
                 $flag=1;
 
             }else{

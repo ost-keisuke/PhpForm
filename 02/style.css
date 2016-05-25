@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+/*リセット用*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -92,7 +93,7 @@ p {
 	position: relative;
 	color: #FF0000;
 	width:560px;/*横幅*/
-	left: 220px;/*左からの相対位置*/
+	left: 215px;/*左からの相対位置*/
 }
 
 #text{
