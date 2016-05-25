@@ -1,4 +1,5 @@
 <?PHP
+    error_reporting(0);
     //ラジオボタン+チェックボックス+セレクトボックス用配列
     $radio = ["男性", "女性", "不明"];
     $check = [1 => "雑誌", 2 => "広告", 3 => "知人の紹介" ];
@@ -23,22 +24,22 @@
 
 <div id="wrap">
 
-    <form action="repost.php" method="post">
+<!--    <form action="repost.php" method="post"> -->
         <header><h1>お問い合わせ 内容の確認</h1></header>
 
         <div class="form">
             <div class="tag"><label>姓名<span>必須</span></label></div>
-            <?php if(empty($surname) and empty($name)){
+            <?php if(trim($surname, " 　") == false and trim($name, " 　") == false){
 
         		echo '<p class="error">姓名を入力してください。</p>';
                 $flag=1;
 
-        	}elseif(empty($surname)){
+        	}elseif(trim($surname, " 　") == false){
 
                 echo '<p class="error">名字を入力してください。</p>';
                 $flag=1;
 
-            }elseif(empty($name)){
+            }elseif(trim($name, " 　") == false){
 
                 echo '<p class="error">お名前を入力してください。</p>';
                 $flag=1;
@@ -58,7 +59,7 @@
         <div class="form">
             <div class="tag"><label>住所<span>必須</span></label></div>
             <?php
-            if(empty($address)){
+            if(trim($address, " 　") == false){
 
                 echo '<p class="error">ご住所を入力してください。</p>';
                 $flag=1;
@@ -72,12 +73,12 @@
         <div class="form">
             <div class="tag"><label>電話番号<span>必須</span></label></div>
             <?php
-            if(empty($phone1) and empty($phone2) and empty($phone3)){
+            if(trim($phone1, " 　") == false and trim($phone2, " 　") == false and trim($phone3, " 　") == false){
 
                 echo '<p class="error">お電話番号を入力してください。</p>';
                 $flag=1;
 
-            }elseif(empty($phone1) or empty($phone2) or empty($phone3)){
+            }elseif(trim($phone1, " 　") == false or trim($phone2, " 　") == false or trim($phone3, " 　") == false){
 
                 echo '<p class="error">お電話番号が未入力の欄があります。ハイフンごとに分けて入力してください。</p>';
                 $flag=1;
@@ -91,17 +92,17 @@
         <div class="form">
             <div class="tag"><label>メールアドレス<span>必須</span></label></div>
             <?php
-            if(empty($email1) and empty($email2)){
+            if(trim($email1, " 　") == false and trim($email2, " 　") == false){
 
         		echo '<p class="error">メールアドレスを入力してください。</p>';
         		$flag=1;
 
-        	}elseif(empty($email1)){
+        	}elseif(trim($email1, " 　") == false){
 
         		echo '<p class="error">メールアドレス@以前を入力してください。</p>';
         		$flag=1;
 
-        	}elseif(empty($email2)){
+        	}elseif(trim($email2, " 　") == false){
 
         		echo '<p class="error">メールアドレス@以降を入力してください。</p>';
         		$flag=1;
@@ -142,9 +143,9 @@
         <div class="form">
             <div class="tag"><label>お問い合わせ内容<span>必須</span></label></div>
             <?php
-            if(empty($inquiry)){
+            if(trim($inquiry, " 　\n\r") == false){
 
-                echo '<p id="errortext"><span>必須</span>お問い合わせ内容を入力してください。</p>';
+                echo '<p id="errortext">お問い合わせ内容を入力してください。</p>';
                 $flag=1;
 
             }else{
@@ -156,7 +157,35 @@
         	<input type="submit" <?php if($flag === 1) echo 'disabled'; ?> value="送信する" /><input type="button" onclick="self.history.back()" value="入力画面に戻る" />
         </div>
         <!--button_end -->
-    </form>
+<!--    </form> -->
 </div>
 </body>
 </html>
+
+
+<?php
+    if($flag != 1){
+        date_default_timezone_set('Asia/Tokyo');
+        $fp = fopen("contact_log.txt", "a");
+        //書き込み用配列作成
+        $write = date(DATE_RFC2822). "\n";
+        $write .= "姓名". "\t". $surname. " ". $name. "\n";
+        $write .= "性別". "\t". $radio[$sex]. "\n";
+        $write .= "住所". "\t". $address. "\n";
+        $write .= "電話番号". "\t". $phone1. "-". $phone2. "-". $phone3. "\n";
+        $write .= "メールアドレス". "\t". $email1. "@". $email2. "\n";
+        if(count($know) == 1){
+            $write .= "サイトを知った経緯". "\t". $check[$know[0]]. "\n";
+        }elseif(count($know) == 2){
+            $write .= "サイトを知った経緯". "\t". $check[$know[0]]. " ". $check[$know[1]]. "\n";
+        }elseif(count($know) == 3){
+            $write .= "サイトを知った経緯". "\t". $check[$know[0]]. " ". $check[$know[1]]. " ". $check[$know[2]]. "\n";
+        }
+        $write .= "お問い合わせカテゴリ". "\t". $select[$category]. "\n";
+        $write .= "お問い合わせ内容". "\n". $inquiry. "\n\n";
+        //ファイルに追記
+        fwrite($fp,$write);
+        fclose($fp);
+    }
+
+ ?>

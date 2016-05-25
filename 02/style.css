@@ -2,6 +2,7 @@
    v2.0 | 20110126
    License: none (public domain)
 */
+/*リセット用*/
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
@@ -88,18 +89,21 @@ p {
 }
 
 #errortext{
-	display: block;
+	display: inline-block;
 	position: relative;
 	color: #FF0000;
 	width:560px;/*横幅*/
-	left: 220px;/*左からの相対位置*/
+	vertical-align: text-top;
+
+
 }
 
 #text{
-	display: block;
+	display: inline-block;
 	position: relative;
 	width:560px;/*横幅*/
-	left: 220px;/*左からの相対位置*/
+	vertical-align: text-top;
+	word-wrap: break-word;
 }
 
 .form {
@@ -127,10 +131,11 @@ p {
 #qa{
 	display: inline-block;
 	position: relative;
+	vertical-align: top;
 	padding: 5px;
 	font-size: 15px;
 	width: 200px;
-	top: -55px;
+
 }
 
 
