@@ -1,4 +1,5 @@
 <?PHP
+    error_reporting(0);
     //ラジオボタン+チェックボックス+セレクトボックス用配列
     $radio = ["男性", "女性", "不明"];
     $check = [1 => "雑誌", 2 => "広告", 3 => "知人の紹介" ];
@@ -23,7 +24,7 @@
 
 <div id="wrap">
 
-    <form action="repost.php" method="post">
+<!--    <form action="repost.php" method="post"> -->
         <header><h1>お問い合わせ 内容の確認</h1></header>
 
         <div class="form">
@@ -156,7 +157,35 @@
         	<input type="submit" <?php if($flag === 1) echo 'disabled'; ?> value="送信する" /><input type="button" onclick="self.history.back()" value="入力画面に戻る" />
         </div>
         <!--button_end -->
-    </form>
+<!--    </form> -->
 </div>
 </body>
 </html>
+
+
+<?php
+    if($flag != 1){
+        date_default_timezone_set('Asia/Tokyo');
+        $fp = fopen("contact_log.txt", "a");
+        //書き込み用配列作成
+        $write = date(DATE_RFC2822). "\n";
+        $write .= "姓名". "\t". $surname. " ". $name. "\n";
+        $write .= "性別". "\t". $radio[$sex]. "\n";
+        $write .= "住所". "\t". $address. "\n";
+        $write .= "電話番号". "\t". $phone1. "-". $phone2. "-". $phone3. "\n";
+        $write .= "メールアドレス". "\t". $email1. "@". $email2. "\n";
+        if(count($know) == 1){
+            $write .= "サイトを知った経緯". "\t". $check[$know[0]]. "\n";
+        }elseif(count($know) == 2){
+            $write .= "サイトを知った経緯". "\t". $check[$know[0]]. " ". $check[$know[1]]. "\n";
+        }elseif(count($know) == 3){
+            $write .= "サイトを知った経緯". "\t". $check[$know[0]]. " ". $check[$know[1]]. " ". $check[$know[2]]. "\n";
+        }
+        $write .= "お問い合わせカテゴリ". "\t". $select[$category]. "\n";
+        $write .= "お問い合わせ内容". "\n". $inquiry. "\n\n";
+        //ファイルに追記
+        fwrite($fp,$write);
+        fclose($fp);
+    }
+
+ ?>

@@ -12,7 +12,7 @@
 
             <div class="form">
                 <div class="tag"><label for="surname">姓<span>必須</span></label></div>
-                <input id="surname" type="text" required="required" name="surname" placeholder="山田" size=10/>
+                <input id="surname" type="text" required="required" name="surname" autofocus placeholder="山田" size=10/>
             </div>
 
             <div class="form">
@@ -64,7 +64,7 @@
             </div>
             <div class="form">
                 <div id="qa"><label for="inquiry">お問い合わせ内容<span>必須</span><p id=one>*1000文字まで</p></label></div>
-                <textarea id="inquiry" required="required" name="inquiry" cols="50" rows="20"></textarea>
+                <textarea id="inquiry" required="required" name="inquiry" maxlength="1000" cols="50" rows="20"></textarea>
             </div>
         </table>
         <div class="button">

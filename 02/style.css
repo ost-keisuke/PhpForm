@@ -94,13 +94,15 @@ p {
 	color: #FF0000;
 	width:560px;/*横幅*/
 	left: 215px;/*左からの相対位置*/
+	
 }
 
 #text{
 	display: block;
 	position: relative;
 	width:560px;/*横幅*/
-	left: 220px;/*左からの相対位置*/
+	left: 215px;/*左からの相対位置*/
+	word-wrap: break-word;
 }
 
 .form {
