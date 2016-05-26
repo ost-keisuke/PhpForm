@@ -12,12 +12,12 @@
 
             <div class="form">
                 <div class="tag"><label for="surname">姓<span>必須</span></label></div>
-                <input id="surname" type="text" required="required" name="surname" autofocus placeholder="山田" size=10/>
+                <input id="surname" type="text" required="required" name="surname" autofocus placeholder="山田"  size=10/>
             </div>
 
             <div class="form">
                 <div class="tag"><label for="name">名<span>必須</span></label></div>
-                <input id="name" type="text" required="required" name="name" placeholder="太郎" size=10/>
+                <input id="name" type="text" required="required" name="name" placeholder="太郎"  size=10/>
             </div>
 
             <div class="form">
@@ -34,22 +34,22 @@
 
             <div class="form">
                 <div class="tag"><label for="phone">電話番号<span>必須</span></label></div>
-                <input id="phone1" type="text" required="required" name="phone1" size=3 minlength=2 maxlength=4 pattern="^[0-9]+$" placeholder="090" /><p> -</p>
-                    <input id="phone2" type="text" required="required" name="phone2" size=3 minlength=2 maxlength=4 pattern="^[0-9]+$" placeholder="1234" /><p> -</p>
-                    <input id="phone3" type="text" required="required" name="phone3" size=3 minlength=2 maxlength=4 pattern="^[0-9]+$" placeholder="5678" />
+                <input id="phone1" type="text" required="required" name="phone1" size=3 minlength=2 maxlength=4 pattern="\d{2,4}" placeholder="090" /><p> -</p>
+                    <input id="phone2" type="text" required="required" name="phone2" size=3 minlength=2 maxlength=4 pattern="\d{2,4}" placeholder="1234" /><p> -</p>
+                    <input id="phone3" type="text" required="required" name="phone3" size=3 minlength=2 maxlength=4 pattern="^\d{3,4}" placeholder="5678" />
             </div>
 
             <div class="form">
                 <div class="tag"><label for="email">メールアドレス<span>必須</span></label></div>
-                <input id="email1" name="email1" required="required" type="text" pattern="^[0-9A-Za-z._-]+$" placeholder="@以前を入力" /><p> @</p>
-                    <input id="email2" name="email2" required="required" type="text" pattern="^[0-9A-Za-z._-]+$" minlength=3 placeholder="@以降を入力" />
+                <input id="email1" name="email1" required="required" type="text" pattern="^[a-zA-Z]{1}[0-9a-zA-Z]+[\w\.-]+$" placeholder="@以前を入力" /><p> @</p>
+                    <input id="email2" name="email2" required="required" type="text" pattern="^[\w\.-]+\.\w{2,}$" minlength=4 placeholder="@以降を入力" />
             </div>
 
             <div class="form">
                     <div class="tag"><label for="know">サイトを知った経緯<span class=any>任意</span></label></div>
-                	<input id="know" name="know[]" type="checkbox" value=1 /><label for="magazine">雑誌</label>
-                    <input id="know" name="know[]" type="checkbox" value=2 /><label for="frend">広告</label>
-                	<input id="know" name="know[]" type="checkbox" value=3 /><label for="yahoo">知人の紹介</label>
+                	<label class=check><input name="know[]" type="checkbox" value=1 />雑誌</label>
+                    <label class=check><input name="know[]" type="checkbox" value=2 />広告</label>
+                	<label class=check><input name="know[]" type="checkbox" value=3 />知人の紹介</label>
 
             </div>
             <div class="form">
