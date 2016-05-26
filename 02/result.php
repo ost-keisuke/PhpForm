@@ -8,6 +8,18 @@
     //すべて受信
     extract($_POST, EXTR_SKIP);
 
+
+    //空白文字の除去
+    $surname = str_replace(array(" ", "　"), '' , $surname);
+    $name = str_replace(array(" ", "　"), "", $name);
+    $phone1 = str_replace(array(" ", "　"), "", $phone1);
+    $phone2 = str_replace(array(" ", "　"), "", $phone2);
+    $phone3 = str_replace(array(" ", "　"), "", $phone3);
+    $email1 = str_replace(array(" ", "　"), "", $email1);
+    $email2 = str_replace(array(" ", "　"), "", $email2);
+    $inquiry = str_replace("\n\r\n\r", "", $inquiry);
+    $inquiry = trim($inquiry, " 　\n\r");
+
     //エラー用FLAG未記入の場合1にする
     $flag=0;
 
@@ -16,113 +28,125 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-<meta charset="UTF-8">
-<title>お問い合わせフォームの確認</title>
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <title>お問い合わせフォームの確認</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div id="wrap">
+    <div id="wrap">
 
-<!--    <form action="repost.php" method="post"> -->
         <header><h1>お問い合わせ 内容の確認</h1></header>
 
         <div class="form">
             <div class="tag"><label>姓名<span>必須</span></label></div>
-            <?php if(trim($surname, " 　") == false and trim($name, " 　") == false){
 
-        		echo '<p class="error">姓名を入力してください。</p>';
+            <?php if(empty($surname) !== false and empty($name) !== false){
+
+                echo '<p class="error">姓名を入力してください。</p>';
                 $flag=1;
 
-        	}elseif(trim($surname, " 　") == false){
+            }elseif(empty($surname) !== false){
 
                 echo '<p class="error">名字を入力してください。</p>';
                 $flag=1;
 
-            }elseif(trim($name, " 　") == false){
+            }elseif(empty($name) !== false){
 
                 echo '<p class="error">お名前を入力してください。</p>';
                 $flag=1;
 
             }else{
-                echo '<p>'. $surname." ".$name. '</p>';
+                echo '<p>'. htmlspecialchars($surname)." ".htmlspecialchars($name). '</p>';
             } ?>
         </div>
 
         <div class="form">
             <div class="tag"><label>性別<span>必須</span></label></div>
             <?php
-                echo '<p>'. $radio[$sex]. '</p>';
+            echo '<p>'. $radio[$sex]. '</p>';
             ?>
         </div>
 
         <div class="form">
             <div class="tag"><label>住所<span>必須</span></label></div>
             <?php
-            if(trim($address, " 　") == false){
+            if(empty($address) !== false){
 
                 echo '<p class="error">ご住所を入力してください。</p>';
                 $flag=1;
 
+            }elseif(mb_strlen($address) >= 100){
+
+                echo '<p class="error">入力文字数が多すぎます。100文字以内で入力しなおしてください。</p>';
+
             }else{
-                echo '<p>'.$address.'</p>';
+
+                echo '<p>'.htmlspecialchars($address).'</p>';
+
             }
-             ?>
+            ?>
         </div>
 
         <div class="form">
             <div class="tag"><label>電話番号<span>必須</span></label></div>
             <?php
-            if(trim($phone1, " 　") == false and trim($phone2, " 　") == false and trim($phone3, " 　") == false){
+            if(empty($phone1) !== false and empty($phone2) !== false and empty($phone3) !== false){
 
                 echo '<p class="error">お電話番号を入力してください。</p>';
                 $flag=1;
 
-            }elseif(trim($phone1, " 　") == false or trim($phone2, " 　") == false or trim($phone3, " 　") == false){
+            }elseif(empty($phone1) !== false or empty($phone2) !== false or empty($phone3) !== false){
 
                 echo '<p class="error">お電話番号が未入力の欄があります。ハイフンごとに分けて入力してください。</p>';
                 $flag=1;
 
             }else{
-                echo '<p>'.$phone1.'-'.$phone2.'-'.$phone3.'</p>';
+                echo '<p>'.htmlspecialchars($phone1).'-'.htmlspecialchars($phone2).'-'.htmlspecialchars($phone3).'</p>';
             }
-             ?>
+            ?>
         </div>
 
         <div class="form">
             <div class="tag"><label>メールアドレス<span>必須</span></label></div>
             <?php
-            if(trim($email1, " 　") == false and trim($email2, " 　") == false){
+            if(empty($email1) !== false and empty($email2) !== false){
 
-        		echo '<p class="error">メールアドレスを入力してください。</p>';
-        		$flag=1;
+                echo '<p class="error">メールアドレスを入力してください。</p>';
+                $flag=1;
 
-        	}elseif(trim($email1, " 　") == false){
+            }elseif(empty($email1) !== false){
 
-        		echo '<p class="error">メールアドレス@以前を入力してください。</p>';
-        		$flag=1;
+                echo '<p class="error">メールアドレス@以前を入力してください。</p>';
+                $flag=1;
 
-        	}elseif(trim($email2, " 　") == false){
+            }elseif(empty($email2) !== false){
 
-        		echo '<p class="error">メールアドレス@以降を入力してください。</p>';
-        		$flag=1;
+                echo '<p class="error">メールアドレス@以降を入力してください。</p>';
+                $flag=1;
 
-        	}else{
-                echo '<p>'.$email1.'@'.$email2.'</p>';
+            }elseif(strlen($email2) - (strrpos($email2, ".") + 1) < 2){
+
+                echo '<p class="error">正しい形式でメールアドレス@以降を入力してください。</p>';
+
+            }else{
+
+                echo '<p>'.htmlspecialchars($email1).'@'.htmlspecialchars($email2).'</p>';
+
             }
-             ?>
+            ?>
         </div>
 
         <div class="form">
             <div class="tag"><label>サイトを知った経緯<span class=any>任意</span></label></div>
             <?php
-                if(empty($know) === false){
-                    echo '<p>';
-                    for($i=0;$i<count($know);$i++) {
-                        echo $check[$know[$i]]. " ";
-                    }
-                    echo '</p>';
+            if(empty($know) === false){
+                echo '<p>';
+                for($i=0;$i<count($know);$i++) {
+                    echo $check[$know[$i]]. " ";
                 }
+                echo '</p>';
+            }
             ?>
         </div>
 
@@ -137,7 +161,7 @@
             }else{
                 echo '<p>'. $select[$category]. '</p>';
             }
-             ?>
+            ?>
         </div>
 
         <div class="form">
@@ -148,26 +172,39 @@
                 echo '<p id="errortext">お問い合わせ内容を入力してください。</p>';
                 $flag=1;
 
+            }elseif(substr_count($inquiry,"\n") >= 50){
+
+                echo '<p id="errortext">お問い合わせは50行以内に収めてください。</p>';
+                $flag=1;
+
+            }elseif(mb_strlen($inquiry) >= 2000){
+
+                echo '<p id="errortext">お問い合わせは2000文字以内に収めてください。<br />現在の文字数「'. mb_strlen($inquiry).'」文字。</p>';
+                $flag=1;
+
             }else{
-                echo '<p id="text">'. nl2br($inquiry). '</p>';
+
+                echo '<p id="text">'. nl2br(htmlspecialchars($inquiry)). '</p>';
+
             }
-             ?>
+            ?>
         </div>
-        <div class="button">
-        	<input type="submit" <?php if($flag === 1) echo 'disabled'; ?> value="送信する" /><input type="button" onclick="self.history.back()" value="入力画面に戻る" />
-        </div>
-        <!--button_end -->
-<!--    </form> -->
-</div>
+        <form>
+            <div class="button">
+                <input type="button" onclick="self.history.back()" value="入力画面に戻る" />
+            </div>
+            <!--button_end -->
+        </form>
+    </div>
 </body>
 </html>
 
 
 <?php
     if($flag != 1){
+
         date_default_timezone_set('Asia/Tokyo');
-        $fp = fopen("contact_log.txt", "a");
-        //書き込み用配列作成
+        //書き込み用文字列作成
         $write = date(DATE_RFC2822). "\n";
         $write .= "姓名". "\t". $surname. " ". $name. "\n";
         $write .= "性別". "\t". $radio[$sex]. "\n";
@@ -183,7 +220,9 @@
         }
         $write .= "お問い合わせカテゴリ". "\t". $select[$category]. "\n";
         $write .= "お問い合わせ内容". "\n". $inquiry. "\n\n";
+
         //ファイルに追記
+        $fp = fopen("contact_log.txt", "a");
         fwrite($fp,$write);
         fclose($fp);
     }
