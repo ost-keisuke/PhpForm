@@ -9,7 +9,7 @@
     extract($_POST, EXTR_SKIP);
 
 
-    //空白文字の除去
+    //不要文字の除去
     $surname = str_replace(array(" ", "　"), '' , $surname);
     $name = str_replace(array(" ", "　"), "", $name);
     $phone1 = str_replace(array(" ", "　"), "", $phone1);
@@ -20,8 +20,14 @@
     $inquiry = str_replace("\n\r\n\r", "", $inquiry);
     $inquiry = trim($inquiry, " 　\n\r");
 
+    //ドメイン判定用
+    $domain = strrchr($email2, ".");
+    $domain = trim($domain, ".");
+
     //エラー用FLAG未記入の場合1にする
     $flag=0;
+
+
 
 ?>
 
@@ -130,7 +136,7 @@
                 echo '<p class="error">メールアドレス@以降を入力してください。</p>';
                 $flag=1;
 
-            }elseif(strlen($email2) - (strrpos($email2, ".") + 1) < 2){
+            }elseif(strlen($email2) - (strrpos($email2, ".") + 1) < 2 or ctype_alpha($domain)){
 
                 echo '<p class="error">正しい形式でメールアドレス@以降を入力してください。</p>';
 
