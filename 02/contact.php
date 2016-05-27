@@ -35,8 +35,8 @@
 
             <div class="form">
                 <div class="tag"><label for="phone">電話番号<span>必須</span></label></div>
-                <input id="phone1" type="text" required="required" name="phone1" size=3 pattern="\d{2,4}" placeholder="090" /><p> -</p>
-                <input id="phone2" type="text" required="required" name="phone2" size=3 pattern="\d{2,4}" placeholder="1234" /><p> -</p>
+                <input id="phone1" type="text" required="required" name="phone1" size=3 pattern="\d{2,5}" placeholder="090" /><p> -</p>
+                <input id="phone2" type="text" required="required" name="phone2" size=3 pattern="\d{1,4}" placeholder="1234" /><p> -</p>
                 <input id="phone3" type="text" required="required" name="phone3" size=3 pattern="^\d{3,4}" placeholder="5678" />
             </div>
 
