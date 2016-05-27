@@ -101,6 +101,11 @@
                 echo '<p class="error">お電話番号が未入力の欄があります。ハイフンごとに分けて入力してください。</p>';
                 $flag=1;
 
+            }elseif(is_numeric($phone1) === false or is_numeric($phone2) === false or is_numeric($phone3) === false){
+
+                echo '<p class="error">お電話番号が数値でない欄があります。正しく入力してください。</p>';
+                $flag=1;
+
             }else{
                 echo '<p>'.htmlspecialchars($phone1).'-'.htmlspecialchars($phone2).'-'.htmlspecialchars($phone3).'</p>';
             }
