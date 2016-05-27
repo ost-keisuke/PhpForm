@@ -12,6 +12,7 @@
     //不要文字の除去
     $surname = str_replace(array(" ", "　"), '' , $surname);
     $name = str_replace(array(" ", "　"), "", $name);
+    $address = str_replace(array("  ", "　　"), " ", $address);
     $phone1 = str_replace(array(" ", "　"), "", $phone1);
     $phone2 = str_replace(array(" ", "　"), "", $phone2);
     $phone3 = str_replace(array(" ", "　"), "", $phone3);
@@ -23,6 +24,8 @@
     //ドメイン判定用
     $domain = strrchr($email2, ".");
     $domain = trim($domain, ".");
+
+
 
     //エラー用FLAG未記入の場合1にする
     $flag=0;
@@ -136,9 +139,21 @@
                 echo '<p class="error">メールアドレス@以降を入力してください。</p>';
                 $flag=1;
 
-            }elseif(strlen($email2) - (strrpos($email2, ".") + 1) < 2 or ctype_alpha($domain)){
+            }elseif(strpos($email2, ".") === false){
 
                 echo '<p class="error">正しい形式でメールアドレス@以降を入力してください。</p>';
+                $flag=1;
+
+            }elseif(strlen($email2) - (strrpos($email2, ".") + 1) < 2 or ctype_alpha($domain) === false){
+
+                echo '<p class="error">正しい形式でメールアドレス@以降を入力してください。</p>';
+                $flag=1;
+
+
+            }elseif(strrpos($email2, ".") === false){
+
+                echo '<p class="error">正しい形式でメールアドレス@以降を入力してください。</p>';
+                $flag=1;
 
             }else{
 
@@ -213,7 +228,7 @@
 
 <?php
     if($flag != 1){
-
+        //タイムゾーンのセット
         date_default_timezone_set('Asia/Tokyo');
         //書き込み用文字列作成
         $write = date(DATE_RFC2822). "\n";
